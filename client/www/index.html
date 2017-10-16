@@ -1,8 +1,6 @@
-<div id="main-flame">
-  <div v-if="!login" id="login-form">
-    <input v-model="email" placeholder="edit me">
-    <p>email:{{ email }}</p>
-    <button v-on:click="createUser" >送信</button>
-  </div>
-  <script src="bundle.js"></script>
+<div id="login-form">
+  <email-input @input-email="emailValue"></email-input>
+  <preview-email v-bind:disEmail="email"></preview-email>
+  <email-submit @submit-email="sendEmail"></email-submit>
 </div>
+<script src="bundle.js"></script>
