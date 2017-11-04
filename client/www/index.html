@@ -9,10 +9,13 @@
     <email-submit @submit-email="sendEmail"></email-submit>
   </div>
   <div v-else>
+    <p>ユーザー:{{email}}</p>
     <p>タスク入力</p>
     <task-input @input-task="setTask"></task-input>
     <task-submit @submit-task="sendTask"></task-submit>
-    Welcome!
+    <ul>
+      <task-item v-for="item in tasks" v-bind:task='item'></task-item>
+    </ul>
   </div>
 </div>
 <script src="bundle.js"></script>

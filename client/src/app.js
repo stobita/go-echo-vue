@@ -57,6 +57,12 @@ Vue.component('task-input', {
   }
 })
 
+// タスクアイテム
+Vue.component('task-item',{
+  template: '<li>{{task}}</li>',
+  props: ['task']
+})
+
 // メインフレーム
 new Vue({
   el: '#main-flame',
@@ -65,9 +71,7 @@ new Vue({
     sendResult: '',
     login: false,
     inputTask: '',
-    tasks: [
-      {id:'',name:''}
-    ]
+    tasks: []
   },
   methods:{
     emailValue: function(inEmail){
@@ -92,7 +96,7 @@ new Vue({
         name: this.inputTask
       })
       .then(response => {
-        this.tasks.push({id:1,name:'aaa'})
+        this.tasks.push(this.inputTask)
       })
       .catch(function (error) {
         console.log(error);
