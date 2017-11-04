@@ -45,11 +45,7 @@ Vue.component('task-submit', {
 // タスク入力フォーム
 Vue.component('task-input', {
   template: '<input v-on:input="taskInput" v-model="task">',
-  data(){
-    return{
-      task:''
-    }
-  },
+  props:['task'],
   methods: {
     taskInput: function(){
       this.$emit('input-task',this.task)
@@ -96,7 +92,8 @@ new Vue({
         name: this.inputTask
       })
       .then(response => {
-        this.tasks.push(this.inputTask)
+        this.tasks.push({id:response.data.ID,name:this.inputTask})
+        this.inputTask = ''
       })
       .catch(function (error) {
         console.log(error);

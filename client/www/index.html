@@ -14,7 +14,7 @@
     <task-input @input-task="setTask"></task-input>
     <task-submit @submit-task="sendTask"></task-submit>
     <ul>
-      <task-item v-for="item in tasks" v-bind:task='item'></task-item>
+      <task-item v-for="item in tasks" v-bind:task='item.name' v-bind:key='item.id'></task-item>
     </ul>
   </div>
 </div>
