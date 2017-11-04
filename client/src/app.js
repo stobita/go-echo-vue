@@ -34,7 +34,12 @@ Vue.component('email-submit',{
 
 // タスク入力登録ボタン
 Vue.component('task-submit', {
-  template: '<button>登録</button>'
+  template: '<button v-on:click="createTask">登録</button>',
+  methods: {
+    createTask: function(){
+      this.$emit('submit-task')
+    }
+  }
 })
 
 // タスク入力フォーム
@@ -59,7 +64,10 @@ new Vue({
     email: '',
     sendResult: '',
     login: false,
-    inputTask: ''
+    inputTask: '',
+    tasks: [
+      {id:'',name:''}
+    ]
   },
   methods:{
     emailValue: function(inEmail){
@@ -78,6 +86,17 @@ new Vue({
     },
     setTask: function(task){
       this.inputTask = task
+    },
+    sendTask: function(){
+      axios.post('http://localhost:1323/tasks/',{
+        name: this.inputTask
+      })
+      .then(response => {
+        this.tasks.push({id:1,name:'aaa'})
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   }
 })

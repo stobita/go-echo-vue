@@ -11,7 +11,7 @@
   <div v-else>
     <p>タスク入力</p>
     <task-input @input-task="setTask"></task-input>
-    <task-submit></task-submit>
+    <task-submit @submit-task="sendTask"></task-submit>
     Welcome!
   </div>
 </div>

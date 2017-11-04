@@ -13,8 +13,8 @@ func main() {
 	// Access-Control-Allow-Originの対策
 	e.Use(middleware.CORS())
 
-	e.GET("/hello/", model.Hello)
 	e.POST("/users/", model.InsertUser)
+	e.POST("/tasks/", model.InsertTask)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }

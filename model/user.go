@@ -28,10 +28,6 @@ var (
 	tablename = "users"
 )
 
-func Hello(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
-}
-
 func InsertUser(c echo.Context) error {
 	sess := conn.NewSession(nil)
 	p := new(userInfoJSON)
