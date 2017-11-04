@@ -1,6 +1,11 @@
-<div id="login-form">
-  <email-input @input-email="emailValue"></email-input>
-  <preview-email v-bind:disEmail="email"></preview-email>
-  <email-submit @submit-email="sendEmail"></email-submit>
+<div id="main-flame">
+  <div v-if="!login">
+    <preview-email v-bind:disEmail="email"></preview-email>
+    <email-input @input-email="emailValue"></email-input>
+    <email-submit @submit-email="sendEmail"></email-submit>
+  </div>
+  <div v-else>
+    Welcome!
+  </div>
 </div>
 <script src="bundle.js"></script>

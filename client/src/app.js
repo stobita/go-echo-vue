@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-let gemail = ''
-
 // プレビュー表示
 Vue.component('preview-email',{
   template: '<p>email:{{ disemail }}</p>',
@@ -34,12 +32,13 @@ Vue.component('email-submit',{
   }
 })
 
-// root インスタンスを作成する
+// メインフレーム
 new Vue({
-  el: '#login-form',
+  el: '#main-flame',
   data:{
     email: '',
-    sendResult: ''
+    sendResult: '',
+    login: false
   },
   methods:{
     emailValue: function(inEmail){
@@ -49,8 +48,8 @@ new Vue({
       axios.post('http://localhost:1323/users/',{
         email: this.email
       })
-      .then(function (response) {
-        console.log(response);
+      .then(response => {
+        this.login = true
       })
       .catch(function (error) {
         console.log(error);
