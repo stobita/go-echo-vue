@@ -32,13 +32,34 @@ Vue.component('email-submit',{
   }
 })
 
+// タスク入力登録ボタン
+Vue.component('task-submit', {
+  template: '<button>登録</button>'
+})
+
+// タスク入力フォーム
+Vue.component('task-input', {
+  template: '<input v-on:input="taskInput" v-model="task">',
+  data(){
+    return{
+      task:''
+    }
+  },
+  methods: {
+    taskInput: function(){
+      this.$emit('input-task',this.task)
+    }
+  }
+})
+
 // メインフレーム
 new Vue({
   el: '#main-flame',
   data:{
     email: '',
     sendResult: '',
-    login: false
+    login: false,
+    inputTask: ''
   },
   methods:{
     emailValue: function(inEmail){
@@ -54,6 +75,9 @@ new Vue({
       .catch(function (error) {
         console.log(error);
       });
+    },
+    setTask: function(task){
+      this.inputTask = task
     }
   }
 })

@@ -1,10 +1,17 @@
+<header>
+  <h1>タスク管理アプリ</h1>
+</header>
 <div id="main-flame">
   <div v-if="!login">
+    <h2>ユーザーログイン</h2>
     <preview-email v-bind:disEmail="email"></preview-email>
     <email-input @input-email="emailValue"></email-input>
     <email-submit @submit-email="sendEmail"></email-submit>
   </div>
   <div v-else>
+    <p>タスク入力</p>
+    <task-input @input-task="setTask"></task-input>
+    <task-submit></task-submit>
     Welcome!
   </div>
 </div>

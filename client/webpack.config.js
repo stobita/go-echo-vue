@@ -4,8 +4,7 @@ module.exports = {
   entry: './src/app.js',
   output: {
     path: path.join(__dirname, 'www'),
-    filename: 'bundle.js',
-    login: false
+    filename: 'bundle.js'
   },
   devServer: {
     contentBase: 'www',
